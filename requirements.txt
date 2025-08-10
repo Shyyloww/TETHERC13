@@ -1,0 +1,12 @@
+# For the C2 Manager (helios_manager.py)
+PyQt6
+requests
+
+# For the Relay Server (helios_relay.py)
+Flask
+gunicorn
+
+# For the Implant (used by builder)
+requests
+psutil
+pyinstaller
