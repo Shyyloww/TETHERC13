@@ -1,0 +1,6 @@
+# requirements.txt - For the local C2 Manager
+
+requests
+PyQt6
+psutil
+pyinstaller

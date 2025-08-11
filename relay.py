@@ -1,4 +1,4 @@
-# relay_server.py
+# relay.py
 from flask import Flask, request, jsonify
 import time, threading
 
@@ -64,10 +64,12 @@ def discover_sessions():
     live_sessions = {}
     timeout_threshold = time.time() - 30 
     with locks["session"]:
+        # Create a copy of items to avoid runtime errors during iteration
         for sid, data in list(active_sessions.items()):
             if data["last_seen"] > timeout_threshold:
                 live_sessions[sid] = data
             else:
+                # Remove timed-out sessions
                 del active_sessions[sid]
     return jsonify({"sessions": live_sessions})
 
